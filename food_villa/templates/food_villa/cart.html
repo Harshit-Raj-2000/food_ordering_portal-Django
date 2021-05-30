@@ -1,0 +1,53 @@
+{% extends "food_villa/layout.html" %}
+{% load static %}
+
+{% block title %}
+Cart
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="container orderTable col-10 col-md-8 col-lg-6 mt-5 p-3">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Item</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a,b,c,d in objects %}
+                <tr class="foodItem" id={{b.id}}>
+                    <th scope="row">{{a}}</th>
+                    <td>{{b.name}}</td>
+                    <td>{{c}}</td>
+                    <td>${{d}}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <th scope="row">Total</th>
+                    <td></td>
+                    <td></td>
+                    <td>${{total}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container orderTable col-10 col-md-8 col-lg-6 mt-5 p-3">
+        <div class="mb-3">
+            <label for="address" class="form-label">Address:</label>
+            <textarea class="form-control" id="address" rows="3"></textarea>
+        </div>
+        <button class="btn btn-primary" type="button">Place Order</button>
+    </div>
+
+    {% endblock %}
+
+    {% block style %}
+    <link rel="stylesheet" href="{% static 'food_villa/cart.css' %}">
+    {% endblock %}

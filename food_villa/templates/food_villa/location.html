@@ -1,0 +1,53 @@
+{% extends "food_villa/layout.html" %}
+{% load static %}
+
+{% block title %}
+Food Villa
+{% endblock %}
+
+{% block body %}
+<div class="header">
+  <a href="#default" class="logo">FOOD VILLA</a>
+  <div class="header-right">
+    <a href="{% url 'index' %}">Home</a>
+    <a href="{% url 'menu' %}">Food Menu</a>
+    <a href="#contact">Contact</a>
+    <a class="active" href="#location">Locate Us</a>
+    <a href="{% url 'logout' %}">Logout</a>
+  </div>
+</div>
+
+<div class="address">
+  Address: <br />
+  Mirjanhat road<br />
+  Near Durga mandir, Mirjanhat <br />
+  Bhagalpur, Bihar 812005
+</div>
+
+<div class="map">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d451.1335242603462!2d86.981115!3d25.234628!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7ee62e0937a62e8a!2sFood%20Villa!5e0!3m2!1sen!2sin!4v1617778614980!5m2!1sen!2sin"
+    width="1300"
+    height="450"
+    style="border: 0"
+    allowfullscreen="true"
+    loading="lazy"
+  ></iframe>
+</div>
+
+<footer>
+  <div id="contact">
+    <p>
+      Mail:<br />
+      <a href="mailto:foodvilla@example.com">foodvilla@example.com</a>
+    </p>
+  </div>
+</footer>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'food_villa/location.css'%}" />
+{% endblock %}
+    
+   
+    
