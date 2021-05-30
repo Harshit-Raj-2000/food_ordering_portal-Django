@@ -6,7 +6,8 @@ Cart
 {% endblock %}
 
 {% block body %}
-
+<div class="alert alert-warning" style="display:None;" id="topAlert"role="alert">
+</div>
 
     <div class="container orderTable col-10 col-md-8 col-lg-6 mt-5 p-3">
         <table class="table">
@@ -43,11 +44,15 @@ Cart
             <label for="address" class="form-label">Address:</label>
             <textarea class="form-control" id="address" rows="3"></textarea>
         </div>
-        <button class="btn btn-primary" type="button">Place Order</button>
+        <button class="btn btn-primary placeOrder" data-url="{% url 'order' %}" data-csrf="{{csrf_token}}" type="button">Place Order</button>
     </div>
 
     {% endblock %}
 
     {% block style %}
     <link rel="stylesheet" href="{% static 'food_villa/cart.css' %}">
+    {% endblock %}
+
+    {% block js %}
+    <script src="{% static 'food_villa/cart.js'%}"></script>
     {% endblock %}
