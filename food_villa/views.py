@@ -5,7 +5,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 import json
 from collections import Counter
-from .models import Item, Order
+from .models import Item, Order, Quantity
+
 
 # Create your views here.
 
@@ -87,12 +88,12 @@ def cart(request):
 def order(request):
     if request.method == "POST":
         data = json.loads(request.body)
-        items = request.session["cartitems"]
-        new_order = Order.objects.create(user = request.user, address=data["address"])
+        items = Counter(request.session["cartitems"])
+        new_order = Order.objects.create(user = request.user, address=data["address"], total=data["total"])
         for each in items:
             obj = Item.objects.get(id=int(each))
-            new_order.items.add(obj)
-        new_order.save()
+            q = Quantity(order = new_order, item = obj, count = items[each])
+            q.save()
         request.session["cartitems"] = []
         print("order successful")
         return HttpResponse(status=200)

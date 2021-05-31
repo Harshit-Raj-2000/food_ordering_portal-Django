@@ -7,6 +7,9 @@
   }
 
   .header {
+    z-index: 1;
+    width: 100vw;
+    position: fixed;
     overflow: hidden;
     background-color: #ff9d5c;
     padding: 20px 10px;
@@ -84,6 +87,7 @@
 
   .card{
       margin: 5% 0;
+      margin-top: 120px;
   }
 
   input[type="text"],

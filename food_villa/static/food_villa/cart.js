@@ -14,8 +14,10 @@ document.querySelector('.placeOrder').onclick = (e)=>{
 
     url = e.target.dataset.url
     csrf = e.target.dataset.csrf
+    total = e.target.dataset.total
     data = JSON.stringify({
-        address: address.value
+        address: address.value,
+        total
     })
     var xhr = new XMLHttpRequest()
     xhr.open('POST', url, true)
@@ -25,6 +27,7 @@ document.querySelector('.placeOrder').onclick = (e)=>{
     xhr.onload = function(){
         if(this.status == 200){
             console.log("order placed")
+            window.location = `/foodvilla`
         }
         else{
          console.log("something went wrong")

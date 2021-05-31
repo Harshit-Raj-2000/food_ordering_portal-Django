@@ -44,7 +44,7 @@ Cart
             <label for="address" class="form-label">Address:</label>
             <textarea class="form-control" id="address" rows="3"></textarea>
         </div>
-        <button class="btn btn-primary placeOrder" data-url="{% url 'order' %}" data-csrf="{{csrf_token}}" type="button">Place Order</button>
+        <button class="btn btn-primary placeOrder" data-url="{% url 'order' %}" data-csrf="{{csrf_token}}" data-total="{{total}}"type="button">Place Order</button>
     </div>
 
     {% endblock %}

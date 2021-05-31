@@ -10,8 +10,26 @@ class Item(models.Model):
         return f"{self.name} - ${self.cost}"
 
 class Order(models.Model):
+    order_datetime = models.DateTimeField(
+       auto_now_add=True
+    )
+    total = models.IntegerField()
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="orders")
     address = models.CharField(max_length=2000)
-    items = models.ManyToManyField(Item)
+    items = models.ManyToManyField(Item , through='Quantity')
 
+    def __str__(self):
+        item_list = dict()
+        m = Quantity.objects.filter(order = self)
+        date_time = self.order_datetime.strftime("%m/%d/%Y, %H:%M")
+        for each in m:
+            item_list[each.item.name] = each.count
+        return f"{date_time} - {self.user} - {self.address} - {item_list} - ${self.total}"
+
+        
+
+class Quantity(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    count = models.IntegerField()
 
