@@ -12,8 +12,8 @@ Menu - Food Villa
   <div class="header-right">
     <a href="{% url 'index' %}">Home</a>
     <a class="active">Food Menu</a>
-    <a href="#contact">Contact</a>
     <a href="{% url 'location' %}">Locate Us</a>
+    <a href="{% url 'view_orders' %}">Orders</a>
     <a href="{% url 'logout' %}">Logout</a>
     <a href="{% url 'cart' %}">
     <span id="cartIcon" data-url="{% url 'cart' %}" data-csrf="{{ csrf_token }}">

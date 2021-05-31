@@ -97,7 +97,31 @@ def order(request):
         request.session["cartitems"] = []
         print("order successful")
         return HttpResponse(status=200)
-        
+
+def view_orders(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("login"))
+    previous = Order.objects.filter(user = request.user)
+    items_array = []
+    dates_array = []
+    count_array = []
+    total_array = []
+    id_array = []
+    k=1
+    for each in previous:
+        i = Quantity.objects.filter(order = each)
+        m = []
+        for _ in i:
+            m.append((_.item.name, _.count))
+        items_array.append(m)
+        dates_array.append(each.order_datetime.strftime("%d/%m/%Y"))
+        total_array.append(each.total)
+        id_array.append(each.id)
+        count_array.append(k)
+        k += 1
+    return render(request, "food_villa/vieworders.html", {
+        "data": list(zip(count_array, dates_array, items_array, total_array, id_array))
+    })
     
 
 

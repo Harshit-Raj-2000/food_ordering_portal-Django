@@ -1,0 +1,58 @@
+{% extends "food_villa/layout.html" %}
+{% load static %}
+
+{% block title %}
+FoodVilla-Orders
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'food_villa/vieworders.css' %}">
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'food_villa/vieworders.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="header">
+    <a href="#default" class="logo">FOOD VILLA</a>
+    <div class="header-right">
+        <a href="{% url 'index' %}">Home</a>
+        <a href="{% url 'menu' %}">Food Menu</a>
+        <a href="{% url 'location' %}">Locate Us</a>
+        <a class="active" href="{% url 'view_orders' %}">Orders</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+</div>
+<div class="container orderTable col-10 col-md-8 col-lg-6 mt-5 p-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Items</th>
+                <th scope="col">Total</th>
+                <th class="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a,b,c,d,e in data %}
+            <tr>
+                <th scope="row">{{a}}</th>
+                <td>{{b}}</td>
+                <td>
+                    <ul>
+                        {% for k,l in c %}
+                        <li>{{k}}-{{l}}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>${{d}}</td>
+                <td><button type="button" id="{{e}}" class="btn btn-outline-primary btn-sm">Submit feedback</button></td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+{% endblock %}

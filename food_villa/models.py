@@ -21,7 +21,7 @@ class Order(models.Model):
     def __str__(self):
         item_list = dict()
         m = Quantity.objects.filter(order = self)
-        date_time = self.order_datetime.strftime("%m/%d/%Y, %H:%M")
+        date_time = self.order_datetime.strftime("%d/%m/%Y, %H:%M")
         for each in m:
             item_list[each.item.name] = each.count
         return f"{date_time} - {self.user} - {self.address} - {item_list} - ${self.total}"
