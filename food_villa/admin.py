@@ -8,7 +8,8 @@ class OrderAdmin(admin.ModelAdmin):
     readonly_fields = ['order_datetime',
         'user',
         'address',
-        'total'
+        'total',
+        'feedback'
         ]
 
 admin.site.register(Item)

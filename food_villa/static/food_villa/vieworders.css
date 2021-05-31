@@ -52,3 +52,40 @@
       float: none;
     }
   }
+
+  #feedbackform{
+    background-color: #ff9d5c;
+    border-radius: 20px;
+    z-index: 1;
+    display: none;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .cross{
+    position: absolute;
+    display: none;
+    top: 4px;
+    color: white;
+    right: 15px;
+  }
+
+  .cross:hover{
+    color: black;
+    cursor: pointer;
+  }
+
+  #validator{
+    background-color: #0d6efd;
+    z-index: 1;
+    padding: 10px;
+    color: #ffffff;
+    font-size: 13px;
+    border-radius: 50px;
+    position: absolute;
+    top: 20px;
+    right: 46%;
+}

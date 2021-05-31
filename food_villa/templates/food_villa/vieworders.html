@@ -14,7 +14,18 @@ FoodVilla-Orders
 {% endblock %}
 
 {% block body %}
-<div class="header">
+<div id="validator" style="display: none;">
+</div>
+<div id="feedbackform" class="col-10 col-md-8 col-lg-6 container pt-4">
+    <i class="fa fa-times-circle-o fa-lg cross" aria-hidden="true"></i>
+    <div class="form-floating mb-3 ">
+        <textarea class="form-control " placeholder="Leave your feedback here" id="feedbacktext"
+            style="height: 100px"></textarea>
+        <label for="feedbacktext">Feedback</label>
+    </div>
+    <button type="button" class="btn btn-primary btn-sm mb-3 submitfeed " data-url="{% url 'feedback' %}" data-csrf="{{csrf_token}}" >Submit</button>
+</div>
+<div class="header ">
     <a href="#default" class="logo">FOOD VILLA</a>
     <div class="header-right">
         <a href="{% url 'index' %}">Home</a>
@@ -48,7 +59,8 @@ FoodVilla-Orders
                     </ul>
                 </td>
                 <td>${{d}}</td>
-                <td><button type="button" id="{{e}}" class="btn btn-outline-primary btn-sm">Submit feedback</button></td>
+                <td><button type="button" id="{{e}}" class="btn btn-outline-primary btn-sm feed">Submit feedback</button>
+                </td>
             </tr>
             {% endfor %}
 

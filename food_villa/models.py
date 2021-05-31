@@ -17,6 +17,7 @@ class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="orders")
     address = models.CharField(max_length=2000)
     items = models.ManyToManyField(Item , through='Quantity')
+    feedback = models.CharField(max_length=3000, default="")
 
     def __str__(self):
         item_list = dict()

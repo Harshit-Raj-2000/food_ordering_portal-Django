@@ -122,6 +122,15 @@ def view_orders(request):
     return render(request, "food_villa/vieworders.html", {
         "data": list(zip(count_array, dates_array, items_array, total_array, id_array))
     })
+
+def feedback(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        order_obj = Order.objects.get(id=data["id"])
+        order_obj.feedback = data["feedback"]
+        order_obj.save()
+        return HttpResponse(status=200)
+
     
 
 
