@@ -1,0 +1,14 @@
+{% extends 'food_villa/layout.html' %}
+{% load static %}
+
+{% block title %}
+Foodvilla - Pay
+{% endblock %}
+
+{% block body %}
+<h3>Scan the qr code to pay</h3>
+<div class="img-con container col-6 col-lg-4">
+<img src="{% static 'food_villa/images/qr.png'%}" class="img-fluid" alt="qr-code">
+</div>
+<a href="{% url 'index' %}"><h3>Go to Home Page</h3></a>
+{% endblock %}

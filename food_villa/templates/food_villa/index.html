@@ -10,7 +10,7 @@ Food Villa
 <div class="header">
     <a href="#default" class="logo">FOOD VILLA</a>
     <div class="header-right">
-        <a class="active" href="#home">Home</a>
+        <a class="active" href="{% url 'index' %}">Home</a>
         <a href="{% url 'menu' %}">Food Menu</a>
         <a href="{% url 'location' %}">Locate Us</a>
         <a href="{% url 'view_orders' %}">Orders</a>
@@ -133,7 +133,7 @@ Food Villa
 </div>
 
 <div class="foodmenu">
-    <a href="#" class="btn btn-primary">Go To Food Menu</a>
+    <a href="{% url 'menu' %}" class="btn btn-primary">Go To Food Menu</a>
 </div>
 
 <footer>

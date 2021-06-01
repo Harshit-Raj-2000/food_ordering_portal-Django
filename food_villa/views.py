@@ -101,7 +101,7 @@ def order(request):
 def view_orders(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("login"))
-    previous = Order.objects.filter(user = request.user)
+    previous = reversed(Order.objects.filter(user = request.user))
     items_array = []
     dates_array = []
     count_array = []
@@ -131,7 +131,10 @@ def feedback(request):
         order_obj.save()
         return HttpResponse(status=200)
 
-    
+def pay(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("login"))
+    return render(request, "food_villa/pay.html")
 
 
 

@@ -27,7 +27,7 @@ document.querySelector('.placeOrder').onclick = (e)=>{
     xhr.onload = function(){
         if(this.status == 200){
             console.log("order placed")
-            window.location = `/foodvilla`
+            window.location = `/foodvilla/pay`
         }
         else{
          console.log("something went wrong")
